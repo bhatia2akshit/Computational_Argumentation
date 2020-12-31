@@ -1,0 +1,48 @@
+
+## TASK
+
+Task: Develop an approach to mine **major claims**, **claims**, and **premises**, and **non-argumentative** units from the student essays corpus.
+In this assignment, you will address the task on the *token level*, meaning that every token to be classified as belonging to one of the argument units (major claim, claim, premise) or non of them. For this the following steps to be performed:
+
+ 1. **Represent your data in the BIO format:** Construct for each of the training and testing splits one tab-separated values file representing the BIO format, where each line contains a token in the first column and the token's label in the second column. Token labels (classes) could be:
+	 * *B-PREMISE or  I-PREMISE*:  representing if token is in the beginning or inside a premise
+	 * *B-CLAIM or I-CLAIM*: representing if token is in the beginning or inside a claim
+	 * *B-MAJOR-CLAIM or I-MAJOR-CLAIM*: representing if token is in the beginning or inside a major claim. 
+	 * *OTHER*: Token is not inside any argumentative unit.
+
+ 2. **Choose a ML model and relevant features**: Represent each token with set of features that you believe would help in identifying the argument unit it belongs to. Select the proper machine learning model to classify the tokens. 
+	 * Potential ML models:  SVM, Graph models, Neural networks, etc. 
+	 * Potential Features: n-grams, POS, token stats, etc. 
+ 
+ 3. **Train the model**:  Use the training file (BIO-format)  to train your model. You might split the training file into training and validation sets to perform parameter tuning. Or perform cross-validation.
+
+## Assignment Protocol:
+
+### What you get from us:
+
+ - **Annotated data:** As a `json` file contains annotated argument units, with train/test split. 
+ - **BIO converter:** Code to convert an essay item (from the `json` file) into its BIO format. You can integrate this into your code to generate the BIO format files for the whole dataset. 
+ - **Evaluation code:** Takes as an input prediction and ground-truth files in BIO format and prints the effectiveness of your approach in terms of F1-score.
+
+### What we expect from you:
+
+- **Code Implementation**: The implementation of your code, that we can run to train and generate predictions on the test set.
+- **Documentation**: A document describing your approach to solve the task, contains answers for the following questions:
+	- How did you address the task?
+	- What features you have used and why?
+	- What model did you choose?
+	- How did you train the model and fine tune its parameters?
+	- What are the steps needed to run the code and reproduce your results?
+
+## Usage of our code:
+
+### Using the bio_converter:
+
+- First split the essay_corpus.json into two json files for training and test using the file ./data/train-test-split.csv
+
+- Second, to generate the BIO file from json file, execute the following command: `python convert_to_bio.py --data_path ./data/<file-to-be-converted>.json --output_path ./data/<name-of-the-outptut-file>.txt`
+
+### Using the evaluation script:
+To compute the effectiveness of your approach, run the following command under code folder:
+
+    python evaluation.py --gt_bio_path data/path-to-the-bio-format-test-file.txt --pred_bio_path data/path-to-the-generated-preds-as-bio-format.txt

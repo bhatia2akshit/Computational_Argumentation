@@ -1,0 +1,14 @@
+[
+	{
+		"id": "1337",
+		"confirmation_bias": true
+	},
+	{
+		"id": "42",
+		"confirmation_bias": false
+	},
+	{
+		"id": "23",
+		"confirmation_bias": true
+	}
+]
