@@ -1,7 +1,6 @@
+# TASK
 
-## TASK
-
-Task: Develop an approach to mine **major claims**, **claims**, and **premises**, and **non-argumentative** units from the student essays corpus.
+Develop an approach to mine **major claims**, **claims**, and **premises**, and **non-argumentative** units from the student essays corpus.
 In this assignment, you will address the task on the *token level*, meaning that every token to be classified as belonging to one of the argument units (major claim, claim, premise) or non of them. For this the following steps to be performed:
 
  1. **Represent your data in the BIO format:** Construct for each of the training and testing splits one tab-separated values file representing the BIO format, where each line contains a token in the first column and the token's label in the second column. Token labels (classes) could be:
